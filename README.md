@@ -3,6 +3,10 @@
 
 ![Cover Image](cover_image.jpg)
 
+## Dashboard Link
+
+https://manumartinezm-pida-henry-main-vllnt8.streamlit.app/visualizations._kpi_1
+
 ## Overview
 This project focuses on analyzing airplane accidents from 1908 to the present day. The primary objective is to gain insights into the trends, causes, and safety improvements in aviation over the years. The dataset used for this analysis, named 'air_accidents,' contains information about accidents, including date, location, operator, aircraft details, fatalities, and more.
 
@@ -69,7 +73,7 @@ During the EDA phase, several visualizations and key performance indicators (KPI
 
 ![crew fatality rate per year](images/crew_fatality_rates_per_year.png)
 
-The analysis revealed that the crew fatality rate reduced by 3.18% between the 2002-2011 and 2012-2021 decades.
+The analysis revealed that the crew fatality rate reduced by 3.18% between 2002 and 2011.
 
 ![crew fatality rate per decade](images/crew_fatality_rate_by_decade.png)
 
