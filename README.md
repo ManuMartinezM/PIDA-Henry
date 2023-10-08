@@ -13,11 +13,8 @@ The 'air_accidents' dataset contains 5008 rows and includes the following column
 * DeclaredTime: Time of the accident
 * Location: Location of the accident
 * Operator: Airline/Military Delegation of the aircraft
-* FlightNumber:
 * Route: Route taken by the airplane
 * Aircraft: Plane model
-* Registration: 
-* CN_LN
 * TotalOnBoard: Number of people on board
 * PassengersAboard: Total passengers on board
 * CrewAboard: Total Crew on board
