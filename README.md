@@ -5,7 +5,7 @@
 
 ## Dashboard Link
 
-[![Visit My Streamlit App](https://miro.medium.com/v2/resize:fit:720/format:webp/1*9Ml5_jx8SPibG0aJ4r7iDw.png)](https://manumartinezm-pida-henry-main-vllnt8.streamlit.app/visualizations._kpi_1)
+[![Visit My Streamlit App](https://miro.medium.com/v2/resize:fit:720/format:webp/1*9Ml5_jx8SPibG0aJ4r7iDw.png)](https://manumartinezm-pida-henry-main-vllnt8.streamlit.app/visualizations_kpi_1)
 
 ## Overview
 This project focuses on analyzing airplane accidents from 1908 to the present day. The primary objective is to gain insights into the trends, causes, and safety improvements in aviation over the years. The dataset used for this analysis, named 'air_accidents,' contains information about accidents, including date, location, operator, aircraft details, fatalities, and more.
