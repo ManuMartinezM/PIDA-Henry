@@ -10,7 +10,7 @@ import seaborn as sns
 air_accidents = pd.read_csv('Air_Accidents.csv')
 air_accidents["Date"] = pd.to_datetime(air_accidents["Date"], format="%Y-%m-%d")
 
-st.title("Crew Fatality Rate Reduction by 10% in the Last Decade")
+st.title("KPI: Crew Fatality Rate Reduction by 10% in the Last Decade")
 
 # Create a slider for selecting the year range
 year_range = st.slider("Select Year Range", min_value=air_accidents['Date'].dt.year.min(), max_value=air_accidents['Date'].dt.year.max(), value=(2002, 2021))

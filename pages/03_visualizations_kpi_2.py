@@ -1,4 +1,6 @@
 import streamlit as st
+import plotly.express as px
+import plotly.graph_objs as go
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -11,74 +13,54 @@ air_accidents["Date"] = pd.to_datetime(air_accidents["Date"], format="%Y-%m-%d")
 st.title('KPI: Hijacking incidents reduction by 10%')
 st.markdown('***')
 
-# Count the total number of aviation accidents involving hijacked planes
-air_accidents['Hijack'] = air_accidents['Summary'].str.contains('hijack', case=False)
-total_accidents_involving_hijack = air_accidents['Hijack'].sum()
 
-# Extract the year and create a new 'Year' column
-air_accidents['Year'] = air_accidents['Date'].dt.year
+# Filter the DataFrame for the two decades (2000-2009 and 2010-2019)
+decade_1_start = 2000
+decade_1_end = 2009
+decade_2_start = 2010
+decade_2_end = 2019
 
-# Filter the dataset to include only hijack incidents
-hijack_incidents = air_accidents[air_accidents['Hijack']]
+filtered_df_decade_1 = air_accidents[(air_accidents['Date'].dt.year >= decade_1_start) & (air_accidents['Date'].dt.year <= decade_1_end)]
+filtered_df_decade_2 = air_accidents[(air_accidents['Date'].dt.year >= decade_2_start) & (air_accidents['Date'].dt.year <= decade_2_end)]
 
-# Group by year and count the number of hijack incidents
-hijack_incidents_by_year = hijack_incidents.groupby('Year')['Hijack'].count()
+# Define keywords or phrases indicating hijacking incidents
+hijacking_keywords = ["hijack", "hijacking"]
 
-air_accidents['Year'] = air_accidents['Date'].dt.year
-air_accidents['Decade'] = (air_accidents['Date'].dt.year // 10) * 10
+# Count hijacking incidents for each decade
+hijacking_incidents_decade_1 = len(filtered_df_decade_1[filtered_df_decade_1['Summary'].str.contains('|'.join(hijacking_keywords), case=False, na=False)])
+hijacking_incidents_decade_2 = len(filtered_df_decade_2[filtered_df_decade_2['Summary'].str.contains('|'.join(hijacking_keywords), case=False, na=False)])
 
-# Count the total number of incidents for each decade
-hijack_incidents_by_decade = hijack_incidents.groupby(air_accidents['Decade']).size()
+# Create a bar chart to visualize hijacking incidents for each decade
+fig = px.bar(
+    x=[f"{decade_1_start}-{decade_1_end}", f"{decade_2_start}-{decade_2_end}"],
+    y=[hijacking_incidents_decade_1, hijacking_incidents_decade_2],
+    labels={'x': 'Decade', 'y': 'Hijacking Incidents'},
+    title='Hijacking Incidents Comparison'
+)
 
-# Hijack incidents by operator
-hijacking_operators = hijack_incidents['Operator'].value_counts()
+st.plotly_chart(fig)
 
-total_accidents_by_decade = air_accidents.groupby(air_accidents['Decade']).size()
+# Filter the dataset to include only rows with hijacking incidents
+hijacking_incidents_df = air_accidents[air_accidents['Summary'].str.contains('|'.join(hijacking_keywords), case=False, na=False)]
 
-# Calculate the Hijacking Incident Rate for each decade
-hijacking_incident_rate_by_decade = (hijack_incidents_by_decade / total_accidents_by_decade) * 100
+# Create a slider for selecting the range of years
+min_year = hijacking_incidents_df['Date'].dt.year.min()
+max_year = hijacking_incidents_df['Date'].dt.year.max()
+selected_years = st.slider("Select Year Range", min_value=min_year, max_value=max_year, value=(min_year, max_year))
 
-if st.checkbox('Total number of hijacking incidents'):
-    st.write(total_accidents_involving_hijack)
+# Filter the hijacking incidents DataFrame based on the selected year range
+filtered_df = hijacking_incidents_df[(hijacking_incidents_df['Date'].dt.year >= selected_years[0]) & (hijacking_incidents_df['Date'].dt.year <= selected_years[1])]
 
-if st.checkbox('Hijack incidents Per Year'):
-    graph_1 = plt.figure(figsize=(12, 6))
-    hijack_incidents_by_year.plot(kind='bar', color='maroon')
-    plt.title('Number of Hijack Incidents by Year')
-    plt.xlabel('Year')
-    plt.ylabel('Number of Incidents')
-    plt.grid(axis='y', linestyle='--', alpha=0.7)
-    plt.tight_layout()
-    st.pyplot(graph_1)
+# Group the data by year and count the number of hijacking incidents per year
+hijacking_incidents_by_year = filtered_df.groupby(filtered_df['Date'].dt.year).size().reset_index(name='Incidents')
 
-if st.checkbox('Hijack incidents Per Decade'):
-    graph_2 = plt.figure(figsize=(12, 6))
-    hijack_incidents_by_decade.plot(kind='bar', color='maroon')
-    plt.title('Number of Hijack Incidents by Decade')
-    plt.xlabel('Decade')
-    plt.ylabel('Number of Incidents')
-    plt.grid(axis='y', linestyle='--', alpha=0.7)
-    plt.tight_layout()
-    st.pyplot(graph_2)
-    
-if st.checkbox('Hijack incidents per operator'):
-    pivot_table = hijack_incidents.pivot_table(index='Year', columns='Operator', aggfunc='size', fill_value=0)
-    
-    graph_3 = plt.figure(figsize=(12, 8))
-    sns.heatmap(pivot_table, cmap='YlGnBu', annot=True, fmt='d', linewidths=0.5, cbar=True)
-    plt.title('Hijacking Incidents by Year and Operator')
-    plt.xlabel('Operator')
-    plt.ylabel('Year')
-    plt.tight_layout()
-    st.pyplot(graph_3)
+# Create a bar chart to visualize the total number of hijacking incidents by year
+fig2 = px.bar(
+    hijacking_incidents_by_year,
+    x='Date',
+    y='Incidents',
+    labels={'Date': 'Year', 'Incidents': 'Hijacking Incidents'},
+    title='Total Hijacking Incidents by Year'
+)
 
-if st.checkbox('Hijack incident rate by decade'):
-    graph_4 = plt.figure(figsize=(12, 6))
-    plt.plot(hijacking_incident_rate_by_decade.index, hijacking_incident_rate_by_decade.values, marker='o', linestyle='-', color='red')
-    plt.title('Hijacking Incident Rate by Decade (1970s to Present)')
-    plt.xlabel('Decade')
-    plt.ylabel('Hijacking Incident Rate (%)')
-    plt.grid(True)
-    plt.tight_layout()
-    st.pyplot(graph_4)
-
+st.plotly_chart(fig2)
