@@ -43,7 +43,7 @@ if st.checkbox('Total number of hijacking incidents'):
 
 if st.checkbox('Hijack incidents Per Year'):
     graph_1 = plt.figure(figsize=(12, 6))
-    hijack_incidents_by_year.plot(kind='bar', color='skyblue')
+    hijack_incidents_by_year.plot(kind='bar', color='maroon')
     plt.title('Number of Hijack Incidents by Year')
     plt.xlabel('Year')
     plt.ylabel('Number of Incidents')
@@ -53,7 +53,7 @@ if st.checkbox('Hijack incidents Per Year'):
 
 if st.checkbox('Hijack incidents Per Decade'):
     graph_2 = plt.figure(figsize=(12, 6))
-    hijack_incidents_by_decade.plot(kind='bar', color='skyblue')
+    hijack_incidents_by_decade.plot(kind='bar', color='maroon')
     plt.title('Number of Hijack Incidents by Decade')
     plt.xlabel('Decade')
     plt.ylabel('Number of Incidents')
