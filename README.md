@@ -49,6 +49,12 @@ During the EDA phase, several visualizations and key performance indicators (KPI
 
 ![accidents per year](images/accidents_per_year.png)
 
+![accidents per year](images/nonmilitary_accidents_per_year.png)
+Total accidents per year from Non-Military flights.
+
+![accidents per year](images/military_accidents_per_year.png)
+Total accidents per year from Military flights.
+
 2) Fatalities per Year: Analyzed the fatalities in accidents to understand changes in aviation safety.
 
 ![fatalities per year](images/fatalities_per_year.png)
