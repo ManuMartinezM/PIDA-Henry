@@ -12,6 +12,9 @@ air_accidents["Date"] = pd.to_datetime(air_accidents["Date"], format="%Y-%m-%d")
 
 st.title("KPI: Crew Fatality Rate Reduction by 10% in the Last Decade")
 
+st.write("The KPI focuses on Crew Fatality Rate Reduction by 10% in the Last Decade in the aviation industry. "
+         "It provides insights into the safety initiatives and challenges that have led to changes in crew fatality rates over the years.")
+
 # Create a slider for selecting the year range
 year_range = st.slider("Select Year Range", min_value=air_accidents['Date'].dt.year.min(), max_value=air_accidents['Date'].dt.year.max(), value=(2002, 2021))
 
@@ -98,3 +101,29 @@ fig4.add_shape(
 )
 
 st.plotly_chart(fig4)
+
+# Calculate total accidents per year
+total_accidents_per_year = filtered_df.groupby(filtered_df['Date'].dt.year).size()
+
+# Create a line chart for historical trends in total accidents
+fig5 = go.Figure(data=[
+    go.Scatter(x=total_accidents_per_year.index, y=total_accidents_per_year.values, mode='lines+markers', name='Total Accidents')
+])
+
+fig5.update_layout(title='Historical Trends in Total Accidents Over Time', xaxis_title='Year', yaxis_title='Total Accidents')
+
+st.plotly_chart(fig5)
+
+# Calculate historical trends in fatality rates
+historical_fatality_rates = round(crew_fatalities_per_year / total_accidents_per_year * 100, 2)
+
+# Create a line chart for historical trends in fatality rates
+fig6 = go.Figure(data=[
+    go.Scatter(x=historical_fatality_rates.index, y=historical_fatality_rates.values, mode='lines+markers', name='Fatality Rate')
+])
+
+fig6.update_layout(title='Historical Trends in Fatality Rate Over Time', xaxis_title='Year', yaxis_title='Fatality Rate (%)')
+
+st.plotly_chart(fig6)
+
+

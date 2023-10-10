@@ -84,6 +84,20 @@ The analysis revealed that the crew fatality rate reduced by 3.18% between 2002 
 ![crew fatality rate per decade](images/crew_fatality_rate_by_decade.png)
 
 However, the rate increased by 3.75% between 2012 and 2021, resulting in a 17.92% increase over the last decade compared to the previous one. This indicates that the KPI was not met.
+
+The KPI focuses on Crew Fatality Rate Reduction by 10% in the Last Decade in the aviation industry. It provides insights into the safety initiatives and challenges that have led to changes in crew fatality rates over the years.
+
+Over the past two decades, the aviation industry has seen substantial changes and advancements in safety standards and practices. The analysis is based on the comparison of two decades: 2002-2011 and 2012-2021.
+
+Key highlights include:
+
+* In the earlier decade (2002-2011), the aviation industry faced challenges in reducing crew fatality rates.
+* The last decade (2012-2021) witnessed a noteworthy increase in crew fatality rates, indicating persistent safety challenges.
+* The KPI result reflects an increase in crew fatality rates, underscoring the need for continued safety improvements.
+
+The aviation industry has made significant efforts to enhance crew safety, but this KPI highlights the ongoing challenges it faces. Factors contributing to the increase in crew fatality rates may include evolving risks, complexities in air travel, and the need for more rigorous safety measures.
+
+This KPI is a reminder that despite past achievements, the aviation industry continues to work diligently to maintain and improve safety standards. It emphasizes the importance of monitoring crew safety and persistently striving for enhanced safety protocols.
 ### Reduction of Hijacking Incidents in Aviation Accidents by 10% in the Last Decade
 
 ![hijack incidents per year](images/hijack_incidents_per_year.png)
@@ -92,8 +106,10 @@ However, the rate increased by 3.75% between 2012 and 2021, resulting in a 17.92
 
 ![hijack incidents per year](images/hijack_incidents_per_year_per_operator.png)
 
-The hijacking rate in the total airplane accidents for the 2000s decade was 1.18%, primarily due to the 9/11 terrorist attacks.
+The hijacking rate in the total airplane accidents for the 2000s decade was 1.18%.
 Encouragingly, the hijacking rate dropped to 0% during the 2010s decade, meeting the KPI of reducing hijacking incidents by 10%.
+
+The observed reduction in hijacking incidents is a significant achievement in aviation security. After the tragic events of September 11, 2001, there was a substantial increase in security measures at airports worldwide. Stringent security protocols, including enhanced passenger screening, reinforced cockpit doors, and international cooperation, have contributed to a dramatic decrease in hijacking incidents. This KPI reflects the industry's dedication to passenger safety.
 
 ![hijack incident rate per decade](images/hijacking_incident_rate_per_decade.png)
 
