@@ -49,6 +49,35 @@ fig1 = go.Figure(data=[
     go.Bar(x=crew_fatalities_per_year.index, y=crew_fatalities_per_year.values, text=crew_fatalities_per_year.values, textposition='auto')
 ])
 fig1.update_layout(title='Crew Fatalities per Year', xaxis_title='Year', yaxis_title='Crew Fatalities')
+
+# Highlight the KPI period (2002-2011 vs. 2012-2021) with a shaded area
+fig1.add_shape(
+    go.layout.Shape(
+        type='rect',
+        x0=2002,
+        x1=2011,
+        y0=crew_fatalities_per_year.min(),
+        y1=crew_fatalities_per_year.max(),
+        fillcolor='rgba(0, 0, 255, 0.2)',  # Blue shading
+        opacity=0.3,
+        layer='below',
+        line=dict(width=0),
+    )
+)
+fig1.add_shape(
+    go.layout.Shape(
+        type='rect',
+        x0=2012,
+        x1=2021,
+        y0=crew_fatalities_per_year.min(),
+        y1=crew_fatalities_per_year.max(),
+        fillcolor='rgba(255, 0, 0, 0.2)',  # Red shading
+        opacity=0.3,
+        layer='below',
+        line=dict(width=0),
+    )
+)
+
 st.plotly_chart(fig1)
 
 # Create Crew Fatality Rate per year plot
@@ -56,6 +85,35 @@ fig2 = go.Figure(data=[
     go.Bar(x=crew_fatality_rate_per_year.index, y=crew_fatality_rate_per_year.values, text=crew_fatality_rate_per_year.values, textposition='auto')
 ])
 fig2.update_layout(title='Crew Fatality Rate per Year', xaxis_title='Year', yaxis_title='Crew Fatality Rate (%)')
+
+# Highlight the KPI period (2002-2011 vs. 2012-2021) with a shaded area
+fig2.add_shape(
+    go.layout.Shape(
+        type='rect',
+        x0=2002,
+        x1=2011,
+        y0=crew_fatality_rate_per_year.min(),
+        y1=crew_fatality_rate_per_year.max(),
+        fillcolor='rgba(0, 0, 255, 0.2)',  # Blue shading
+        opacity=0.3,
+        layer='below',
+        line=dict(width=0),
+    )
+)
+fig2.add_shape(
+    go.layout.Shape(
+        type='rect',
+        x0=2012,
+        x1=2021,
+        y0=crew_fatality_rate_per_year.min(),
+        y1=crew_fatality_rate_per_year.max(),
+        fillcolor='rgba(255, 0, 0, 0.2)',  # Red shading
+        opacity=0.3,
+        layer='below',
+        line=dict(width=0),
+    )
+)
+
 st.plotly_chart(fig2)
 
 # Create Crew Fatality Rate per decade plot
@@ -112,18 +170,33 @@ fig5 = go.Figure(data=[
 
 fig5.update_layout(title='Historical Trends in Total Accidents Over Time', xaxis_title='Year', yaxis_title='Total Accidents')
 
+# Highlight the KPI period (2002-2011 vs. 2012-2021) with a shaded area
+fig5.add_shape(
+    go.layout.Shape(
+        type='rect',
+        x0=2002,
+        x1=2011,
+        y0=total_accidents_per_year.min(),
+        y1=total_accidents_per_year.max(),
+        fillcolor='rgba(0, 0, 255, 0.2)',  # Blue shading
+        opacity=0.3,
+        layer='below',
+        line=dict(width=0),
+    )
+)
+fig5.add_shape(
+    go.layout.Shape(
+        type='rect',
+        x0=2012,
+        x1=2021,
+        y0=total_accidents_per_year.min(),
+        y1=total_accidents_per_year.max(),
+        fillcolor='rgba(255, 0, 0, 0.2)',  # Red shading
+        opacity=0.3,
+        layer='below',
+        line=dict(width=0),
+    )
+)
+
 st.plotly_chart(fig5)
-
-# Calculate historical trends in fatality rates
-historical_fatality_rates = round(crew_fatalities_per_year / total_accidents_per_year * 100, 2)
-
-# Create a line chart for historical trends in fatality rates
-fig6 = go.Figure(data=[
-    go.Scatter(x=historical_fatality_rates.index, y=historical_fatality_rates.values, mode='lines+markers', name='Fatality Rate')
-])
-
-fig6.update_layout(title='Historical Trends in Fatality Rate Over Time', xaxis_title='Year', yaxis_title='Fatality Rate (%)')
-
-st.plotly_chart(fig6)
-
 
