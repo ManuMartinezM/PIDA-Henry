@@ -15,7 +15,7 @@ In addition, I have conducted in-depth analyses of two key performance indicator
 1. **Crew Fatality Rate Reduction by 10% in the Last Decade:**
    - By analyzing this KPI, we found that the fatality rate reduction for crew between 2002 and 2011 was 3.18%, while the rate between 2012-2021 was 3.75%. This indicates that the fatality rate increased by 17.92% between the last decade and the previous one, which shows that the KPI measurements were not met.
 
-2. **Reduction of Hijacking Incidents in Aviation Accidents by 10% the Last Decade:**
+2. **Reduction of Hijacking Incidents in Aviation Accidents by 10% in the Last Decade:**
    - The analysis revealed that the hijacking rate in the total airplane accidents for the 2000s decade was 1.18%, mainly due to the 9/11 terrorist attacks. This contrasts highly with the 2010s decade in which the hijacking rate was 0%, which means the KPI measurements were met.
 
 These KPIs provide valuable insights into specific aspects of aviation safety and contribute to a more comprehensive understanding of the data and its implications.
